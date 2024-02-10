@@ -1,0 +1,135 @@
+{
+	"info": {
+		"_postman_id": "b32f5c89-0a7c-43e2-a821-84c77bc2a7f1",
+		"name": "MOBCHECK",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "29511503",
+		"_collection_link": "https://montuto.postman.co/workspace/My-Workspace~476a9d19-d889-4cfb-8c69-4c875f721716/collection/29511503-b32f5c89-0a7c-43e2-a821-84c77bc2a7f1?action=share&source=collection_link&creator=29511503"
+	},
+	"item": [
+		{
+			"name": "Registration",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstname\":\"Franck\",\r\n    \"lastname\":\"NWAL\",\r\n    \"email\":\"test1@gmail.com\",\r\n    \"password\":\"test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{LOCAL_URL}}/register"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Your Data",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"password": "test",
+						"username": "test1@gmail.com"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{LOCAL_URL}}/user/:email",
+					"host": [
+						"{{LOCAL_URL}}"
+					],
+					"path": [
+						"user",
+						":email"
+					],
+					"variable": [
+						{
+							"key": "email",
+							"value": "test1@gmail.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Users",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"password": "12345",
+						"username": "admin@admin.com"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "{{LOCAL_URL}}/admin/users"
+			},
+			"response": []
+		},
+		{
+			"name": "Activate and Suspend Account",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"password": "12345",
+						"username": "admin@admin.com"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{LOCAL_URL}}/admin/user/:id",
+					"host": [
+						"{{LOCAL_URL}}"
+					],
+					"path": [
+						"admin",
+						"user",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "LOCAL_URL",
+			"value": "http://localhost:8081",
+			"type": "string"
+		}
+	]
+}
