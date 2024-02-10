@@ -3,6 +3,10 @@ package com.example.mobcheck.model;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+import java.util.Collection;
 
 @Data
 @NoArgsConstructor
@@ -27,6 +31,9 @@ public class Users {
     @ManyToOne(optional = false,fetch = FetchType.EAGER)
     @JoinColumn(name = "role",referencedColumnName = "id")
     private Roles role;
+    @OneToMany
+    @Fetch(FetchMode.JOIN)
+    private Collection<Blacklist> blacklistCollection;
 
     public Users(String firstname, String lastname, String email, String password, Roles role) {
         this.firstname = firstname;
