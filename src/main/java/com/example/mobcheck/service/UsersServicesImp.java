@@ -1,5 +1,6 @@
 package com.example.mobcheck.service;
 
+import com.example.mobcheck.dto.ResponseBody;
 import com.example.mobcheck.dto.UsersDto;
 import com.example.mobcheck.model.Roles;
 import com.example.mobcheck.model.Users;
@@ -66,21 +67,21 @@ public class UsersServicesImp implements UsersServices{
             Optional<Roles> roles = rolesRepository.findByName("USER");
             if(roles.isPresent()){
                 Users users = new Users(usersDto.getFirstname(), usersDto.getLastname(), usersDto.getEmail(), passwordEncoder.encode(usersDto.getPassword()),roles.get());
-                return ResponseEntity.status(201).body(usersRepository.save(users));
+                return ResponseEntity.status(201).body(new ResponseBody(201,"Save successfully",usersRepository.save(users)));
             }else {
-                return ResponseEntity.status(404).body("Role not found");
+                return ResponseEntity.status(404).body(new ResponseBody(404,"Role not found",null));
             }
         }
     }
 
     @Override
     public ResponseEntity<?> getPersonalData(String email) {
-        return ResponseEntity.status(200).body(usersRepository.findByEmail(email));
+        return ResponseEntity.status(200).body(new ResponseBody(200,"Fetch successfully",usersRepository.findByEmail(email)));
     }
 
     @Override
     public ResponseEntity<?> getAllUsers() {
-        return ResponseEntity.status(200).body(usersRepository.findAll());
+        return ResponseEntity.status(200).body(new ResponseBody(200,"Fetch successfully",usersRepository.findAll()));
     }
 
     @Override
@@ -92,9 +93,9 @@ public class UsersServicesImp implements UsersServices{
             }else{
                 users.get().setStatus(Boolean.TRUE);
             }
-            return ResponseEntity.status(200).body(usersRepository.save(users.get()));
+            return ResponseEntity.status(200).body(new ResponseBody(200,"Fetch successfully",usersRepository.save(users.get())));
         }else {
-            return ResponseEntity.status(404).body("User with id not found");
+            return ResponseEntity.status(404).body(new ResponseBody(404,"User with id not found",null));
         }
     }
 }

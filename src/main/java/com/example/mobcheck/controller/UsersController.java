@@ -1,5 +1,6 @@
 package com.example.mobcheck.controller;
 
+import com.example.mobcheck.dto.ResponseBody;
 import com.example.mobcheck.dto.UsersDto;
 import com.example.mobcheck.service.UsersServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ public class UsersController {
     @GetMapping("/")
     public ResponseEntity<?> baseUrl(){
         usersServices.addRoleAndAdmin();
-        return ResponseEntity.status(200).body("WELCOME TO MobCheck API");
+        return ResponseEntity.status(200).body(new ResponseBody(200,"WELCOME TO MobCheck API",null));
     }
 
     @PostMapping("/register")
