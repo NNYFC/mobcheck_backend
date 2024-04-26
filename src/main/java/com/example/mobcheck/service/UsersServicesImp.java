@@ -1,5 +1,6 @@
 package com.example.mobcheck.service;
 
+import com.example.mobcheck.dto.BlacklistDto;
 import com.example.mobcheck.dto.ResponseBody;
 import com.example.mobcheck.dto.UsersDto;
 import com.example.mobcheck.model.Roles;
@@ -97,5 +98,10 @@ public class UsersServicesImp implements UsersServices{
         }else {
             return ResponseEntity.status(404).body(new ResponseBody(404,"User with id not found",null));
         }
+    }
+
+    @Override
+    public ResponseEntity<?> addBlacklist(BlacklistDto blacklistDto) {
+        return null;
     }
 }

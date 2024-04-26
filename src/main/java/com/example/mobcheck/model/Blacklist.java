@@ -3,12 +3,14 @@ package com.example.mobcheck.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 @Entity
 @Table(name = "blacklist")
 @Data
+@NoArgsConstructor
 public class Blacklist {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
