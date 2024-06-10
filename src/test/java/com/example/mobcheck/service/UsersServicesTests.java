@@ -1,6 +1,5 @@
 package com.example.mobcheck.service;
 
-import com.example.mobcheck.dto.ResponseBody;
 import com.example.mobcheck.dto.UsersDto;
 import com.example.mobcheck.model.Roles;
 import com.example.mobcheck.model.Users;
@@ -15,8 +14,6 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.ResponseEntity;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,6 +41,8 @@ public class UsersServicesTests {
         ResponseEntity<?> responseEntity = usersServicesImp.addUser(usersDto);
         Assertions.assertEquals(201, responseEntity.getStatusCode().value());
     }
+
+
 
     @Test
     public void getAllUsers(){
